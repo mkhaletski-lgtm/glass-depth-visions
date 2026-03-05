@@ -233,6 +233,42 @@
       inset 0 -1px 0 hsl(0 0% 0% / 0.3);
   }
 
+  /* Button shine/glint animation */
+  @keyframes btn-shine-anim {
+    0% {
+      left: -100%;
+    }
+    20% {
+      left: 100%;
+    }
+    100% {
+      left: 100%;
+    }
+  }
+
+  .btn-shine {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-shine::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      hsl(0 0% 100% / 0.3) 50%,
+      transparent 100%
+    );
+    transform: skewX(-20deg);
+    animation: btn-shine-anim 4s ease-in-out infinite;
+    pointer-events: none;
+  }
+
   /* Floating animation */
   @keyframes float {
     0%, 100% {
