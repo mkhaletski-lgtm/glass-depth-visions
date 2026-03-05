@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import logo from '@/assets/logo.png';
+import logo from '@/assets/logo-white.png';
 
 export default function Footer() {
   return (
@@ -14,7 +14,6 @@ export default function Footer() {
             alt="PARFUMEPOINT"
             className="h-12 w-auto"
           />
-
           <motion.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -23,26 +22,17 @@ export default function Footer() {
           >
             © {new Date().getFullYear()} ООО «ПАРФЮМПОИНТ». Все права защищены.
           </motion.p>
-
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             className="flex items-center gap-4"
           >
-            <a
-              href="https://t.me/ParfumepointBot"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-primary transition-colors"
-            >
+            <a href="https://t.me/ParfumepointBot" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
               Telegram
             </a>
             <span className="text-muted-foreground">|</span>
-            <a
-              href="mailto:parfumepoint@mail.ru"
-              className="text-muted-foreground hover:text-primary transition-colors"
-            >
+            <a href="mailto:parfumepoint@mail.ru" className="text-muted-foreground hover:text-primary transition-colors">
               Email
             </a>
           </motion.div>

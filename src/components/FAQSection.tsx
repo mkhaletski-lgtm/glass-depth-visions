@@ -79,7 +79,7 @@ export default function FAQSection() {
               onClick={scrollToContacts}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="btn-3d mt-6 w-full flex items-center justify-center gap-2"
+              className="btn-3d btn-shine mt-6 w-full flex items-center justify-center gap-2"
             >
               <FileText size={20} />
               Получить презентацию

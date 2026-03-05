@@ -121,7 +121,7 @@ export default function AdvantagesSection() {
           viewport={{ once: true }}
           className="text-center mb-20"
         >
-          <button onClick={scrollToContacts} className="btn-3d inline-flex items-center gap-2">
+          <button onClick={scrollToContacts} className="btn-3d btn-shine inline-flex items-center gap-2">
             <MessageCircle size={20} />
             Получить консультацию
           </button>
@@ -173,15 +173,15 @@ export default function AdvantagesSection() {
             style={{ y: imageY, rotate }}
             className="relative hidden lg:block"
           >
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              className="glass-panel p-4"
-            >
-              <img
-                src={advantagesBg}
-                alt="PARFUMEPOINT"
-                className="w-full h-auto rounded-xl"
-              />
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            className="glass-panel p-4 h-full"
+          >
+            <img
+              src={advantagesBg}
+              alt="PARFUMEPOINT"
+              className="w-full h-full object-contain rounded-xl"
+            />
             </motion.div>
             
             {/* Decorative floating elements */}

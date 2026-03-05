@@ -108,7 +108,7 @@ export default function ProfitSection() {
             rel="noopener noreferrer"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="btn-3d flex items-center gap-3 w-full sm:w-auto justify-center"
+            className="btn-3d btn-shine flex items-center gap-3 w-full sm:w-auto justify-center"
           >
             <Send size={20} />
             Получить бизнес-план в Telegram
@@ -121,7 +121,7 @@ export default function ProfitSection() {
             }}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="btn-3d-secondary flex items-center gap-3 w-full sm:w-auto justify-center"
+            className="btn-3d-secondary btn-shine flex items-center gap-3 w-full sm:w-auto justify-center"
           >
             <Mail size={20} />
             Получить бизнес-план на e-mail
