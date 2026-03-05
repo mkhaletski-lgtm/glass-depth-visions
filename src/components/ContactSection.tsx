@@ -155,7 +155,7 @@ export default function ContactSection() {
                   disabled={!agreed || isSubmitted}
                   whileHover={{ scale: agreed ? 1.02 : 1 }}
                   whileTap={{ scale: agreed ? 0.98 : 1 }}
-                  className={`w-full btn-3d flex items-center justify-center gap-2 ${
+                  className={`w-full btn-3d btn-shine flex items-center justify-center gap-2 ${
                     !agreed ? 'opacity-50 cursor-not-allowed' : ''
                   }`}
                 >
