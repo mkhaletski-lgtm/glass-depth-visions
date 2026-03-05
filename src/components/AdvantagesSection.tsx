@@ -173,15 +173,15 @@ export default function AdvantagesSection() {
             style={{ y: imageY, rotate }}
             className="relative hidden lg:block"
           >
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              className="glass-panel p-4"
-            >
-              <img
-                src={advantagesBg}
-                alt="PARFUMEPOINT"
-                className="w-full h-auto rounded-xl"
-              />
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            className="glass-panel p-4 h-full"
+          >
+            <img
+              src={advantagesBg}
+              alt="PARFUMEPOINT"
+              className="w-full h-full object-contain rounded-xl"
+            />
             </motion.div>
             
             {/* Decorative floating elements */}
