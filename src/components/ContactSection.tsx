@@ -52,7 +52,7 @@ export default function ContactSection() {
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="btn-3d inline-flex items-center gap-2"
+                className="btn-3d btn-shine inline-flex items-center gap-2"
               >
                 <Send size={20} />
                 Связаться
