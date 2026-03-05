@@ -121,7 +121,7 @@ export default function AdvantagesSection() {
           viewport={{ once: true }}
           className="text-center mb-20"
         >
-          <button onClick={scrollToContacts} className="btn-3d inline-flex items-center gap-2">
+          <button onClick={scrollToContacts} className="btn-3d btn-shine inline-flex items-center gap-2">
             <MessageCircle size={20} />
             Получить консультацию
           </button>

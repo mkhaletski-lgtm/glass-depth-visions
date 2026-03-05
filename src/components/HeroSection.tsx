@@ -1,6 +1,7 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import { ChevronDown, Send, Mail } from 'lucide-react';
+import heroImage from '@/assets/logo-white.png';
 
 export default function HeroSection() {
   const ref = useRef<HTMLDivElement>(null);
@@ -17,12 +18,20 @@ export default function HeroSection() {
     document.querySelector('#contacts')?.scrollIntoView({ behavior: 'smooth' });
   };
 
+  const floatAnimation = {
+    y: [0, -10, 0],
+    transition: {
+      duration: 4,
+      repeat: Infinity,
+      ease: 'easeInOut',
+    },
+  };
+
   return (
     <section
       ref={ref}
       className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20"
     >
-      {/* Animated background orbs */}
       <div className="orb orb-primary w-96 h-96 -top-48 -left-48 animate-float" />
       <div className="orb orb-accent w-80 h-80 top-1/4 -right-40 animate-float-delayed" />
       <div className="orb orb-primary w-64 h-64 bottom-20 left-1/4 animate-float-slow" />
@@ -48,18 +57,34 @@ export default function HeroSection() {
             <span className="text-sm font-medium">УСПЕЙТЕ СТАТЬ ПЕРВЫМ В СВОЁМ РЕГИОНЕ!</span>
           </motion.div>
 
-          {/* Main heading */}
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-display font-bold mb-6 leading-tight">
+          {/* Main heading with float */}
+          <motion.h1
+            animate={floatAnimation}
+            className="text-4xl md:text-6xl lg:text-7xl font-display font-bold mb-6 leading-tight"
+          >
             <span className="block">Бизнес с вендинговыми</span>
             <span className="block">аппаратами по распылению духов</span>
             <span className="chrome-text block mt-2">PARFUMEPOINT</span>
-          </h1>
+          </motion.h1>
 
-          {/* Subtitle */}
+          {/* Background image under title */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 0.15, scale: 1 }}
+            transition={{ delay: 0.5, duration: 1 }}
+            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] md:w-[700px] pointer-events-none -z-10"
+          >
+            <img src={heroImage} alt="" className="w-full h-auto opacity-50" />
+          </motion.div>
+
+          {/* Subtitle with float */}
           <motion.p
+            animate={{
+              y: [0, -8, 0],
+              transition: { duration: 5, repeat: Infinity, ease: 'easeInOut' },
+            }}
             initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.4 }}
+            whileInView={{ opacity: 1 }}
             className="text-xl md:text-2xl text-muted-foreground mb-10 max-w-2xl mx-auto"
           >
             Оставьте заявку и получите бизнес план для запуска своего бизнеса!
@@ -76,14 +101,14 @@ export default function HeroSection() {
               href="https://t.me/ParfumepointBot"
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-3d flex items-center gap-3 w-full sm:w-auto justify-center"
+              className="btn-3d btn-shine flex items-center gap-3 w-full sm:w-auto justify-center"
             >
               <Send size={20} />
               Получить бизнес-план в Telegram
             </a>
             <button
               onClick={scrollToContacts}
-              className="btn-3d-secondary flex items-center gap-3 w-full sm:w-auto justify-center"
+              className="btn-3d-secondary btn-shine flex items-center gap-3 w-full sm:w-auto justify-center"
             >
               <Mail size={20} />
               Получить бизнес-план на e-mail
@@ -105,7 +130,6 @@ export default function HeroSection() {
         </motion.div>
       </motion.div>
 
-      {/* 3D rotating decorative elements */}
       <motion.div
         style={{ y: useTransform(scrollYProgress, [0, 1], [0, 100]) }}
         className="absolute top-1/4 left-10 w-20 h-20 border border-primary/30 rounded-lg animate-rotate-slow hidden lg:block"

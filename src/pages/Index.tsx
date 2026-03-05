@@ -8,19 +8,16 @@ import FAQSection from '@/components/FAQSection';
 import ProfitSection from '@/components/ProfitSection';
 import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
+import ScrollToTop from '@/components/ScrollToTop';
 
-// Lazy load 3D scene for performance
 const Scene3D = lazy(() => import('@/components/Scene3D'));
 
 const Index = () => {
   return (
     <div className="relative min-h-screen overflow-x-hidden">
-      {/* 3D Background Scene */}
       <Suspense fallback={null}>
         <Scene3D />
       </Suspense>
-
-      {/* Main content */}
       <Header />
       <main>
         <HeroSection />
@@ -32,6 +29,7 @@ const Index = () => {
         <ContactSection />
       </main>
       <Footer />
+      <ScrollToTop />
     </div>
   );
 };

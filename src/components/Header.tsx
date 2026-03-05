@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
-import logo from '@/assets/logo.png';
+import logo from '@/assets/logo-white.png';
 
 const navItems = [
   { label: 'О НАС', href: '#about' },
@@ -16,19 +16,14 @@ export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const scrollTo = (href: string) => {
     setIsMobileMenuOpen(false);
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+    document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
@@ -42,16 +37,10 @@ export default function Header() {
         }`}
       >
         <div className="container mx-auto px-4 flex items-center justify-between">
-          <motion.a
-            href="#"
-            className="relative z-10"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
+          <motion.a href="#" className="relative z-10" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <img src={logo} alt="PARFUMEPOINT" className="h-12 md:h-16 w-auto" />
           </motion.a>
 
-          {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-8">
             {navItems.map((item, index) => (
               <motion.button
@@ -68,36 +57,25 @@ export default function Header() {
             ))}
           </nav>
 
-          {/* CTA Button */}
           <motion.button
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.5 }}
             onClick={() => scrollTo('#contacts')}
-            className="hidden md:block btn-3d text-sm px-6 py-3"
+            className="hidden md:block btn-3d btn-shine text-sm px-6 py-3"
           >
             Получить бизнес-план
           </motion.button>
 
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden relative z-10 p-2"
-          >
+          <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="lg:hidden relative z-10 p-2">
             {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
         </div>
       </motion.header>
 
-      {/* Mobile Menu */}
       <AnimatePresence>
         {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-40 lg:hidden"
-          >
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-40 lg:hidden">
             <motion.div
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
@@ -123,7 +101,7 @@ export default function Header() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.5 }}
                   onClick={() => scrollTo('#contacts')}
-                  className="btn-3d mt-4"
+                  className="btn-3d btn-shine mt-4"
                 >
                   Получить бизнес-план
                 </motion.button>
