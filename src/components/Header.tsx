@@ -11,7 +11,11 @@ const navItems = [
   { label: 'КОНТАКТЫ', href: '#contacts' },
 ];
 
-export default function Header() {
+interface HeaderProps {
+  onOpenEmailForm: () => void;
+}
+
+export default function Header({ onOpenEmailForm }: HeaderProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -61,7 +65,7 @@ export default function Header() {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.5 }}
-            onClick={() => scrollTo('#contacts')}
+            onClick={onOpenEmailForm}
             className="hidden md:block btn-3d btn-shine text-sm px-6 py-3"
           >
             Получить бизнес-план
@@ -100,7 +104,7 @@ export default function Header() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.5 }}
-                  onClick={() => scrollTo('#contacts')}
+                  onClick={() => { setIsMobileMenuOpen(false); onOpenEmailForm(); }}
                   className="btn-3d btn-shine mt-4"
                 >
                   Получить бизнес-план

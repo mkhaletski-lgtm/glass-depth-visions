@@ -36,9 +36,7 @@ export default function ReviewsSection() {
           </h2>
         </motion.div>
 
-        {/* Video Gallery */}
         <div className="relative max-w-6xl mx-auto">
-          {/* Navigation arrows */}
           {canScrollLeft && (
             <button
               onClick={() => setScrollIndex(Math.max(0, scrollIndex - 1))}
@@ -79,7 +77,7 @@ export default function ReviewsSection() {
                     <div className="aspect-[9/16] relative overflow-hidden">
                       <img
                         src={video.thumbnail}
-                        alt="Отзыв клиента PARFUMEPOINT"
+                        alt="вендинговые аппарат PARFUMEPOINT"
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       />
                       <div className="absolute inset-0 bg-background/30 flex items-center justify-center group-hover:bg-background/10 transition-colors">
@@ -99,7 +97,6 @@ export default function ReviewsSection() {
         </div>
       </div>
 
-      {/* Video Modal */}
       {activeVideo && (
         <motion.div
           initial={{ opacity: 0 }}

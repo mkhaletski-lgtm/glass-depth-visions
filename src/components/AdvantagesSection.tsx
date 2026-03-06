@@ -54,7 +54,11 @@ const clientAdvantages = [
   },
 ];
 
-export default function AdvantagesSection() {
+interface AdvantagesSectionProps {
+  onOpenEmailForm: () => void;
+}
+
+export default function AdvantagesSection({ onOpenEmailForm }: AdvantagesSectionProps) {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -64,13 +68,8 @@ export default function AdvantagesSection() {
   const imageY = useTransform(scrollYProgress, [0, 1], [100, -100]);
   const rotate = useTransform(scrollYProgress, [0, 1], [-5, 5]);
 
-  const scrollToContacts = () => {
-    document.querySelector('#contacts')?.scrollIntoView({ behavior: 'smooth' });
-  };
-
   return (
     <section id="advantages" ref={ref} className="py-20 lg:py-32 relative overflow-hidden">
-      {/* Background orbs */}
       <div className="orb orb-primary w-80 h-80 top-1/4 -left-40 opacity-20" />
       <div className="orb orb-accent w-64 h-64 bottom-1/4 -right-32 opacity-20" />
 
@@ -83,7 +82,7 @@ export default function AdvantagesSection() {
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold section-title leading-tight">
-            Почему PARFUMEPOINT ваш идеальный выбор среди всех вендинговых франшиз
+            Почему <span className="chrome-text">PARFUMEPOINT</span> ваш идеальный выбор среди всех вендинговых франшиз
           </h2>
         </motion.div>
 
@@ -95,12 +94,11 @@ export default function AdvantagesSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              whileHover={{ 
-                y: -8,
-                rotateX: 5,
-                rotateY: 5,
-              }}
-              className="glass-panel p-6 group perspective-1000"
+              whileHover={{ y: -8, rotateX: 5, rotateY: 5 }}
+              className={`glass-panel p-6 group perspective-1000 ${
+                index >= 3 ? 'md:col-span-1 lg:col-span-1' : ''
+              }`}
+              style={index === 3 ? { gridColumn: undefined } : undefined}
             >
               <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                 <advantage.icon className="w-7 h-7 text-primary" />
@@ -115,13 +113,32 @@ export default function AdvantagesSection() {
           ))}
         </div>
 
+        {/* Center last 2 cards wrapper */}
+        <style>{`
+          @media (min-width: 1024px) {
+            #advantages .grid.md\\:grid-cols-2.lg\\:grid-cols-3 {
+              justify-items: center;
+            }
+            #advantages .grid.md\\:grid-cols-2.lg\\:grid-cols-3 > :nth-child(4) {
+              grid-column: 1 / 2;
+              margin-left: auto;
+              margin-right: 0;
+            }
+            #advantages .grid.md\\:grid-cols-2.lg\\:grid-cols-3 > :nth-child(5) {
+              grid-column: 2 / 3;
+              margin-left: 0;
+              margin-right: auto;
+            }
+          }
+        `}</style>
+
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           className="text-center mb-20"
         >
-          <button onClick={scrollToContacts} className="btn-3d btn-shine inline-flex items-center gap-2">
+          <button onClick={onOpenEmailForm} className="btn-3d btn-shine inline-flex items-center gap-2">
             <MessageCircle size={20} />
             Получить консультацию
           </button>
@@ -135,11 +152,11 @@ export default function AdvantagesSection() {
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold section-title">
-            Преимущества вендинговых аппаратов PARFUMEPOINT для клиентов
+            Преимущества вендинговых аппаратов <span className="chrome-text">PARFUMEPOINT</span> для клиентов
           </h2>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-8 items-center">
+        <div className="grid lg:grid-cols-2 gap-8 items-stretch">
           {/* Cards grid */}
           <div className="grid sm:grid-cols-2 gap-6">
             {clientAdvantages.map((advantage, index) => (
@@ -149,64 +166,39 @@ export default function AdvantagesSection() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                whileHover={{ 
-                  scale: 1.03,
-                  rotateY: 5,
-                }}
+                whileHover={{ scale: 1.03, rotateY: 5 }}
                 className="glass-panel p-5 chrome-border group preserve-3d"
               >
                 <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-chrome-start/20 via-chrome-mid/20 to-chrome-end/20 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
                   <advantage.icon className="w-6 h-6 text-primary" />
                 </div>
-                <h3 className="text-base font-display font-semibold mb-2">
-                  {advantage.title}
-                </h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">
-                  {advantage.description}
-                </p>
+                <h3 className="text-base font-display font-semibold mb-2">{advantage.title}</h3>
+                <p className="text-muted-foreground text-sm leading-relaxed">{advantage.description}</p>
               </motion.div>
             ))}
           </div>
 
-          {/* Floating image */}
+          {/* Image - height matches left container */}
           <motion.div
             style={{ y: imageY, rotate }}
-            className="relative hidden lg:block"
+            className="relative hidden lg:flex items-stretch"
           >
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            className="glass-panel p-4 h-full"
-          >
-            <img
-              src={advantagesBg}
-              alt="PARFUMEPOINT"
-              className="w-full h-full object-contain rounded-xl"
-            />
+            <motion.div whileHover={{ scale: 1.05 }} className="glass-panel p-4 flex items-center w-full">
+              <img
+                src={advantagesBg}
+                alt="вендинговые аппарат PARFUMEPOINT"
+                className="w-full h-full object-contain rounded-xl"
+              />
             </motion.div>
-            
-            {/* Decorative floating elements */}
+
             <motion.div
-              animate={{ 
-                y: [0, -15, 0],
-                rotate: [0, 5, 0],
-              }}
-              transition={{ 
-                duration: 4,
-                repeat: Infinity,
-                ease: 'easeInOut',
-              }}
+              animate={{ y: [0, -15, 0], rotate: [0, 5, 0] }}
+              transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
               className="absolute -top-8 -right-8 w-24 h-24 glass-panel rounded-2xl hidden xl:block"
             />
             <motion.div
-              animate={{ 
-                y: [0, 15, 0],
-                rotate: [0, -5, 0],
-              }}
-              transition={{ 
-                duration: 5,
-                repeat: Infinity,
-                ease: 'easeInOut',
-              }}
+              animate={{ y: [0, 15, 0], rotate: [0, -5, 0] }}
+              transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
               className="absolute -bottom-8 -left-8 w-20 h-20 glass-panel rounded-full hidden xl:block"
             />
           </motion.div>
