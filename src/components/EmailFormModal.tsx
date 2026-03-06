@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect } from 'react';
-import { X, Send, CheckCircle } from 'lucide-react';
+import { X, Mail, CheckCircle } from 'lucide-react';
 
 interface EmailFormModalProps {
   isOpen: boolean;
@@ -115,7 +115,7 @@ export function EmailFormContent({ className = '' }: { className?: string }) {
             </>
           ) : (
             <>
-              <Send size={20} />
+              <Mail size={20} />
               Отправить
             </>
           )}

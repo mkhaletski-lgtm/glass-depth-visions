@@ -65,8 +65,8 @@ export default function HeroSection({ onOpenEmailForm }: HeroSectionProps) {
             animate={floatAnimation}
             className="text-4xl md:text-6xl lg:text-7xl font-display font-bold mb-6 leading-tight uppercase"
           >
-            <span className="block">Бизнес с вендинговыми</span>
-            <span className="block">аппаратами по распылению духов</span>
+            <span className="block">Бизнес с вендинговыми аппаратами</span>
+            <span className="block">по распылению духов</span>
             <span className="chrome-text block mt-2">PARFUMEPOINT</span>
           </motion.h1>
 
