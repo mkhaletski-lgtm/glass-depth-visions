@@ -115,7 +115,7 @@ export function EmailFormContent({ className = '' }: { className?: string }) {
             </>
           ) : (
             <>
-              <Send size={20} />
+              <Mail size={20} />
               Отправить
             </>
           )}

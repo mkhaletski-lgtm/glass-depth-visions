@@ -116,7 +116,7 @@ export default function AboutSection() {
 
         {/* Gallery */}
         <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="relative">
-          <div className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide">
+          <div className="grid grid-cols-5 gap-3">
             {galleryImages.map((img, index) => (
               <motion.div
                 key={index}
@@ -125,10 +125,9 @@ export default function AboutSection() {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
                 whileHover={{ scale: 1.05, zIndex: 10 }}
-                className="flex-shrink-0 snap-center"
               >
-                <div className="glass-panel p-2 chrome-border">
-                  <img src={img} alt="вендинговые аппарат PARFUMEPOINT" className="w-64 h-80 object-cover rounded-xl" />
+                <div className="glass-panel p-1.5 chrome-border">
+                  <img src={img} alt="вендинговые аппарат PARFUMEPOINT" className="w-full aspect-[3/4] object-cover rounded-lg" />
                 </div>
               </motion.div>
             ))}

@@ -31,7 +31,7 @@ export default function ContactSection({ onOpenEmailForm }: ContactSectionProps)
                 whileTap={{ scale: 0.95 }}
                 className="btn-3d btn-shine inline-flex items-center gap-2"
               >
-                <Send size={20} />
+                <MailIcon size={20} />
                 Связаться
               </motion.button>
             </div>
