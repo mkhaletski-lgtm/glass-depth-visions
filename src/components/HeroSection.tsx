@@ -3,7 +3,11 @@ import { useRef } from 'react';
 import { ChevronDown, Send, Mail } from 'lucide-react';
 import heroImage from '@/assets/logo-white.png';
 
-export default function HeroSection() {
+interface HeroSectionProps {
+  onOpenEmailForm: () => void;
+}
+
+export default function HeroSection({ onOpenEmailForm }: HeroSectionProps) {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -13,10 +17,6 @@ export default function HeroSection() {
   const y = useTransform(scrollYProgress, [0, 1], [0, 200]);
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
   const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.9]);
-
-  const scrollToContacts = () => {
-    document.querySelector('#contacts')?.scrollIntoView({ behavior: 'smooth' });
-  };
 
   const floatAnimation = {
     y: [0, -10, 0],
@@ -46,21 +46,24 @@ export default function HeroSection() {
           transition={{ duration: 0.8, ease: 'easeOut' }}
           className="max-w-5xl mx-auto"
         >
-          {/* Badge */}
-          <motion.div
+          {/* Badge - gradient link */}
+          <motion.a
+            href="https://t.me/ParfumepointBot"
+            target="_blank"
+            rel="noopener noreferrer"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.2 }}
-            className="inline-flex items-center gap-2 glass-panel px-4 py-2 mb-8"
+            className="inline-flex items-center gap-2 btn-3d btn-shine px-6 py-3 mb-8 text-sm font-bold tracking-wider"
           >
-            <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-            <span className="text-sm font-medium">УСПЕЙТЕ СТАТЬ ПЕРВЫМ В СВОЁМ РЕГИОНЕ!</span>
-          </motion.div>
+            <span className="w-2 h-2 rounded-full bg-primary-foreground animate-pulse" />
+            УСПЕЙТЕ СТАТЬ ПЕРВЫМ В СВОЁМ РЕГИОНЕ!
+          </motion.a>
 
-          {/* Main heading with float */}
+          {/* Main heading with float - uppercase */}
           <motion.h1
             animate={floatAnimation}
-            className="text-4xl md:text-6xl lg:text-7xl font-display font-bold mb-6 leading-tight"
+            className="text-4xl md:text-6xl lg:text-7xl font-display font-bold mb-6 leading-tight uppercase"
           >
             <span className="block">Бизнес с вендинговыми</span>
             <span className="block">аппаратами по распылению духов</span>
@@ -74,7 +77,7 @@ export default function HeroSection() {
             transition={{ delay: 0.5, duration: 1 }}
             className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] md:w-[700px] pointer-events-none -z-10"
           >
-            <img src={heroImage} alt="" className="w-full h-auto opacity-50" />
+            <img src={heroImage} alt="PARFUMEPOINT" className="w-full h-auto opacity-50" />
           </motion.div>
 
           {/* Subtitle with float */}
@@ -107,7 +110,7 @@ export default function HeroSection() {
               Получить бизнес-план в Telegram
             </a>
             <button
-              onClick={scrollToContacts}
+              onClick={onOpenEmailForm}
               className="btn-3d-secondary btn-shine flex items-center gap-3 w-full sm:w-auto justify-center"
             >
               <Mail size={20} />

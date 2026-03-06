@@ -30,34 +30,29 @@ const faqs = [
   },
 ];
 
-export default function FAQSection() {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
+interface FAQSectionProps {
+  onOpenEmailForm: () => void;
+}
 
-  const scrollToContacts = () => {
-    document.querySelector('#contacts')?.scrollIntoView({ behavior: 'smooth' });
-  };
+export default function FAQSection({ onOpenEmailForm }: FAQSectionProps) {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
     <section id="faq" className="py-20 lg:py-32 relative overflow-hidden">
-      {/* Background */}
       <div className="orb orb-accent w-96 h-96 top-0 right-0 opacity-15" />
 
       <div className="container mx-auto px-4">
-        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-display font-bold section-title">
-            F.A.Q.
-          </h2>
+          <h2 className="text-4xl md:text-5xl font-display font-bold section-title">F.A.Q.</h2>
           <p className="text-xl text-muted-foreground mt-4">Частые вопросы</p>
         </motion.div>
 
         <div className="grid lg:grid-cols-5 gap-12 items-start">
-          {/* FAQ Image */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -68,15 +63,11 @@ export default function FAQSection() {
               whileHover={{ scale: 1.02, rotateY: 5 }}
               className="glass-panel p-4 chrome-border preserve-3d"
             >
-              <img
-                src={faqBg}
-                alt="PARFUMEPOINT FAQ"
-                className="w-full h-auto rounded-xl"
-              />
+              <img src={faqBg} alt="вендинговые аппарат PARFUMEPOINT" className="w-full h-auto rounded-xl" />
             </motion.div>
 
             <motion.button
-              onClick={scrollToContacts}
+              onClick={onOpenEmailForm}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="btn-3d btn-shine mt-6 w-full flex items-center justify-center gap-2"
@@ -86,7 +77,6 @@ export default function FAQSection() {
             </motion.button>
           </motion.div>
 
-          {/* FAQ Accordion */}
           <div className="lg:col-span-3 space-y-4">
             {faqs.map((faq, index) => (
               <motion.div
@@ -113,7 +103,6 @@ export default function FAQSection() {
                       <ChevronDown className="w-5 h-5 text-primary" />
                     </motion.div>
                   </div>
-
                   <motion.div
                     initial={false}
                     animate={{
@@ -123,9 +112,7 @@ export default function FAQSection() {
                     transition={{ duration: 0.3, ease: 'easeInOut' }}
                     className="overflow-hidden"
                   >
-                    <p className="text-muted-foreground mt-4 leading-relaxed">
-                      {faq.answer}
-                    </p>
+                    <p className="text-muted-foreground mt-4 leading-relaxed">{faq.answer}</p>
                   </motion.div>
                 </motion.button>
               </motion.div>
