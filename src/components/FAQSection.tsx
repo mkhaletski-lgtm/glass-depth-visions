@@ -38,7 +38,7 @@ export default function FAQSection({ onOpenEmailForm }: FAQSectionProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section id="faq" className="py-20 lg:py-32 relative overflow-hidden">
+    <section id="faq" className="py-14 lg:py-22 relative overflow-hidden">
       <div className="orb orb-accent w-96 h-96 top-0 right-0 opacity-15" />
 
       <div className="container mx-auto px-4">

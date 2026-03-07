@@ -9,7 +9,7 @@ interface ContactSectionProps {
 
 export default function ContactSection({ onOpenEmailForm }: ContactSectionProps) {
   return (
-    <section id="contacts" className="py-20 lg:py-32 relative overflow-hidden">
+    <section id="contacts" className="py-14 lg:py-22 relative overflow-hidden">
       <div className="orb orb-primary w-80 h-80 top-0 left-0 opacity-15" />
       <div className="orb orb-accent w-96 h-96 bottom-0 right-0 opacity-20" />
 

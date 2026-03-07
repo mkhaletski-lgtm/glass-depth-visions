@@ -69,7 +69,7 @@ export default function AdvantagesSection({ onOpenEmailForm }: AdvantagesSection
   const rotate = useTransform(scrollYProgress, [0, 1], [-5, 5]);
 
   return (
-    <section id="advantages" ref={ref} className="py-20 lg:py-32 relative overflow-hidden">
+    <section id="advantages" ref={ref} className="py-14 lg:py-22 relative overflow-hidden">
       <div className="orb orb-primary w-80 h-80 top-1/4 -left-40 opacity-20" />
       <div className="orb orb-accent w-64 h-64 bottom-1/4 -right-32 opacity-20" />
 
@@ -86,8 +86,8 @@ export default function AdvantagesSection({ onOpenEmailForm }: AdvantagesSection
           </h2>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-          {businessAdvantages.map((advantage, index) => (
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
+          {businessAdvantages.slice(0, 3).map((advantage, index) => (
             <motion.div
               key={advantage.title}
               initial={{ opacity: 0, y: 30 }}
@@ -95,10 +95,7 @@ export default function AdvantagesSection({ onOpenEmailForm }: AdvantagesSection
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
               whileHover={{ y: -8, rotateX: 5, rotateY: 5 }}
-              className={`glass-panel p-6 group perspective-1000 ${
-                index >= 3 ? 'md:col-span-1 lg:col-span-1' : ''
-              }`}
-              style={index === 3 ? { gridColumn: undefined } : undefined}
+              className="glass-panel p-6 group perspective-1000"
             >
               <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                 <advantage.icon className="w-7 h-7 text-primary" />
@@ -112,25 +109,29 @@ export default function AdvantagesSection({ onOpenEmailForm }: AdvantagesSection
             </motion.div>
           ))}
         </div>
-
-        {/* Center last 2 cards wrapper */}
-        <style>{`
-          @media (min-width: 1024px) {
-            #advantages .grid.md\\:grid-cols-2.lg\\:grid-cols-3 {
-              justify-items: center;
-            }
-            #advantages .grid.md\\:grid-cols-2.lg\\:grid-cols-3 > :nth-child(4) {
-              grid-column: 1 / 2;
-              margin-left: auto;
-              margin-right: 0;
-            }
-            #advantages .grid.md\\:grid-cols-2.lg\\:grid-cols-3 > :nth-child(5) {
-              grid-column: 2 / 3;
-              margin-left: 0;
-              margin-right: auto;
-            }
-          }
-        `}</style>
+        <div className="flex justify-center gap-6 mb-12">
+          {businessAdvantages.slice(3).map((advantage, index) => (
+            <motion.div
+              key={advantage.title}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: (index + 3) * 0.1 }}
+              whileHover={{ y: -8, rotateX: 5, rotateY: 5 }}
+              className="glass-panel p-6 group perspective-1000 w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)]"
+            >
+              <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                <advantage.icon className="w-7 h-7 text-primary" />
+              </div>
+              <h3 className="text-lg font-display font-semibold mb-3 group-hover:text-primary transition-colors">
+                {advantage.title}
+              </h3>
+              <p className="text-muted-foreground text-sm leading-relaxed">
+                {advantage.description}
+              </p>
+            </motion.div>
+          ))}
+        </div>
 
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}

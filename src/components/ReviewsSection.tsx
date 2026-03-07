@@ -21,7 +21,7 @@ export default function ReviewsSection() {
   const canScrollRight = scrollIndex < videos.length - visibleCount;
 
   return (
-    <section className="py-20 lg:py-32 relative overflow-hidden">
+    <section className="py-14 lg:py-22 relative overflow-hidden">
       <div className="orb orb-primary w-80 h-80 -top-40 right-1/4 opacity-15" />
 
       <div className="container mx-auto px-4">

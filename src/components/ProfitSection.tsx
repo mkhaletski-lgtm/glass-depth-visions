@@ -28,7 +28,7 @@ export default function ProfitSection({ onOpenEmailForm }: ProfitSectionProps) {
   const opacity = useTransform(scrollYProgress, [0, 0.3], [0.5, 1]);
 
   return (
-    <section id="profit" ref={ref} className="py-20 lg:py-32 relative overflow-hidden">
+    <section id="profit" ref={ref} className="py-14 lg:py-22 relative overflow-hidden">
       <div className="orb orb-primary w-96 h-96 -bottom-48 left-1/4 opacity-20" />
       <div className="orb orb-accent w-80 h-80 top-20 -right-40 opacity-15" />
 
