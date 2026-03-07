@@ -69,7 +69,7 @@ export default function AdvantagesSection({ onOpenEmailForm }: AdvantagesSection
   const rotate = useTransform(scrollYProgress, [0, 1], [-5, 5]);
 
   return (
-    <section id="advantages" ref={ref} className="py-20 lg:py-32 relative overflow-hidden">
+    <section id="advantages" ref={ref} className="py-14 lg:py-22 relative overflow-hidden">
       <div className="orb orb-primary w-80 h-80 top-1/4 -left-40 opacity-20" />
       <div className="orb orb-accent w-64 h-64 bottom-1/4 -right-32 opacity-20" />
 
