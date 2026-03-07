@@ -29,7 +29,7 @@ export default function AboutSection() {
   const rotate = useTransform(scrollYProgress, [0, 1], [0, 10]);
 
   return (
-    <section id="about" ref={ref} className="py-20 lg:py-32 relative overflow-hidden">
+    <section id="about" ref={ref} className="py-14 lg:py-22 relative overflow-hidden">
       <div className="orb orb-accent w-96 h-96 -top-48 right-0 opacity-20" />
 
       <div className="container mx-auto px-4">

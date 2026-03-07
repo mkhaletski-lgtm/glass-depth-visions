@@ -116,18 +116,16 @@ export default function AdvantagesSection({ onOpenEmailForm }: AdvantagesSection
         {/* Center last 2 cards wrapper */}
         <style>{`
           @media (min-width: 1024px) {
-            #advantages .grid.md\\:grid-cols-2.lg\\:grid-cols-3 {
-              justify-items: center;
-            }
-            #advantages .grid.md\\:grid-cols-2.lg\\:grid-cols-3 > :nth-child(4) {
-              grid-column: 1 / 2;
-              margin-left: auto;
-              margin-right: 0;
-            }
+            #advantages .grid.md\\:grid-cols-2.lg\\:grid-cols-3 > :nth-child(4),
             #advantages .grid.md\\:grid-cols-2.lg\\:grid-cols-3 > :nth-child(5) {
-              grid-column: 2 / 3;
-              margin-left: 0;
-              margin-right: auto;
+              grid-column: auto;
+            }
+            #advantages .grid.md\\:grid-cols-2.lg\\:grid-cols-3 {
+              justify-content: center;
+            }
+            #advantages .grid.md\\:grid-cols-2.lg\\:grid-cols-3::after {
+              content: '';
+              grid-column: 3;
             }
           }
         `}</style>

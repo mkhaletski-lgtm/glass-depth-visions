@@ -63,7 +63,7 @@ export default function HeroSection({ onOpenEmailForm }: HeroSectionProps) {
           {/* Main heading with float - uppercase */}
           <motion.h1
             animate={floatAnimation}
-            className="text-4xl md:text-6xl lg:text-7xl font-display font-bold mb-6 leading-tight uppercase"
+            className="text-3xl md:text-5xl lg:text-6xl font-display font-bold mb-6 leading-tight uppercase"
           >
             <span className="block">Бизнес с вендинговыми аппаратами</span>
             <span className="block">по распылению духов</span>
