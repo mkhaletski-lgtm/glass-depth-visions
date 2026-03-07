@@ -90,7 +90,7 @@ export default function HeroSection({ onOpenEmailForm }: HeroSectionProps) {
             whileInView={{ opacity: 1 }}
             className="text-xl md:text-2xl text-muted-foreground mb-10 max-w-2xl mx-auto"
           >
-            Оставьте заявку и получите бизнес план для запуска своего бизнеса!
+            Оставьте заявку и получите бизнес-план для запуска своего бизнеса!
           </motion.p>
 
           {/* CTA Buttons */}
