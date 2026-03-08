@@ -116,8 +116,8 @@ export default function AboutSection() {
 
         {/* Gallery */}
         <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="relative">
-          <div className="grid grid-cols-5 gap-3">
-            {galleryImages.map((img, index) => (
+          <div className="flex justify-center gap-3 md:gap-4 mb-3 md:mb-4">
+            {galleryImages.slice(0, 3).map((img, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, scale: 0.8 }}
@@ -125,6 +125,24 @@ export default function AboutSection() {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
                 whileHover={{ scale: 1.05, zIndex: 10 }}
+                className="w-[30%] md:w-[26%]"
+              >
+                <div className="glass-panel p-1.5 chrome-border">
+                  <img src={img} alt="вендинговые аппарат PARFUMEPOINT" className="w-full aspect-[3/4] object-cover rounded-lg" />
+                </div>
+              </motion.div>
+            ))}
+          </div>
+          <div className="flex justify-center gap-3 md:gap-4">
+            {galleryImages.slice(3).map((img, index) => (
+              <motion.div
+                key={index + 3}
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: (index + 3) * 0.1 }}
+                whileHover={{ scale: 1.05, zIndex: 10 }}
+                className="w-[30%] md:w-[26%]"
               >
                 <div className="glass-panel p-1.5 chrome-border">
                   <img src={img} alt="вендинговые аппарат PARFUMEPOINT" className="w-full aspect-[3/4] object-cover rounded-lg" />
