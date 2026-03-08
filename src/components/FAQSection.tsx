@@ -57,7 +57,7 @@ export default function FAQSection({ onOpenEmailForm }: FAQSectionProps) {
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="lg:col-span-2 relative hidden lg:block"
+            className="lg:col-span-2 relative"
           >
             <motion.div
               whileHover={{ scale: 1.02, rotateY: 5 }}

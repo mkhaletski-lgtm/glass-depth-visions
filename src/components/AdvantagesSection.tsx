@@ -182,7 +182,7 @@ export default function AdvantagesSection({ onOpenEmailForm }: AdvantagesSection
           {/* Image - height matches left container */}
           <motion.div
             style={{ y: imageY, rotate }}
-            className="relative hidden lg:flex items-center justify-center"
+            className="relative flex items-center justify-center"
           >
             <motion.div whileHover={{ scale: 1.05 }} className="glass-panel p-4 flex items-center justify-center w-1/2 mx-auto">
               <img

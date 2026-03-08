@@ -35,7 +35,7 @@ export default function ContactSection({ onOpenEmailForm }: ContactSectionProps)
                 Связаться
               </motion.button>
             </div>
-            <div className="relative hidden lg:block">
+            <div className="relative">
               <motion.img
                 initial={{ opacity: 0, scale: 0.8, x: 50 }}
                 whileInView={{ opacity: 1, scale: 1, x: 0 }}
