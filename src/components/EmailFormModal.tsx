@@ -72,20 +72,6 @@ export function EmailFormContent({ className = '' }: { className?: string }) {
             maxLength={255}
           />
         </div>
-        <div>
-          <label className="block text-sm font-medium mb-2">
-            Телефон <span className="text-primary">*</span>
-          </label>
-          <input
-            type="tel"
-            required
-            value={formData.phone}
-            onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-            className="w-full px-4 py-3 rounded-xl bg-secondary/50 border border-glass-border focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
-            placeholder="+7 (___) ___-__-__"
-            maxLength={20}
-          />
-        </div>
         <div className="flex items-start gap-3">
           <input
             type="checkbox"
