@@ -23,7 +23,6 @@ export function EmailFormContent({ className = '' }: { className?: string }) {
         body: JSON.stringify({
           name: formData.name,
           email: formData.email,
-          phone: formData.phone,
           _subject: 'Новая заявка с сайта PARFUMEPOINT',
         }),
       });
