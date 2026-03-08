@@ -8,7 +8,7 @@ interface EmailFormModalProps {
 }
 
 export function EmailFormContent({ className = '' }: { className?: string }) {
-  const [formData, setFormData] = useState({ name: '', email: '', phone: '' });
+  const [formData, setFormData] = useState({ name: '', email: '' });
   const [agreed, setAgreed] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
@@ -23,14 +23,13 @@ export function EmailFormContent({ className = '' }: { className?: string }) {
         body: JSON.stringify({
           name: formData.name,
           email: formData.email,
-          phone: formData.phone,
           _subject: 'Новая заявка с сайта PARFUMEPOINT',
         }),
       });
       setIsSubmitted(true);
       setTimeout(() => {
         setIsSubmitted(false);
-        setFormData({ name: '', email: '', phone: '' });
+        setFormData({ name: '', email: '' });
         setAgreed(false);
       }, 3000);
     } catch {
@@ -71,20 +70,6 @@ export function EmailFormContent({ className = '' }: { className?: string }) {
             className="w-full px-4 py-3 rounded-xl bg-secondary/50 border border-glass-border focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
             placeholder="your@email.com"
             maxLength={255}
-          />
-        </div>
-        <div>
-          <label className="block text-sm font-medium mb-2">
-            Телефон <span className="text-primary">*</span>
-          </label>
-          <input
-            type="tel"
-            required
-            value={formData.phone}
-            onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-            className="w-full px-4 py-3 rounded-xl bg-secondary/50 border border-glass-border focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
-            placeholder="+7 (___) ___-__-__"
-            maxLength={20}
           />
         </div>
         <div className="flex items-start gap-3">
