@@ -8,7 +8,7 @@ interface EmailFormModalProps {
 }
 
 export function EmailFormContent({ className = '' }: { className?: string }) {
-  const [formData, setFormData] = useState({ name: '', email: '', phone: '' });
+  const [formData, setFormData] = useState({ name: '', email: '' });
   const [agreed, setAgreed] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
