@@ -29,7 +29,7 @@ export function EmailFormContent({ className = '' }: { className?: string }) {
       setIsSubmitted(true);
       setTimeout(() => {
         setIsSubmitted(false);
-        setFormData({ name: '', email: '', phone: '' });
+        setFormData({ name: '', email: '' });
         setAgreed(false);
       }, 3000);
     } catch {
