@@ -8,13 +8,22 @@ interface EmailFormModalProps {
 }
 
 export function EmailFormContent({ className = '' }: { className?: string }) {
-  const [formData, setFormData] = useState({ name: '', email: '' });
+  const [formData, setFormData] = useState({ name: '', email: '', phone: '' });
+  const [phoneError, setPhoneError] = useState('');
   const [agreed, setAgreed] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const phoneRegex = /^\+\d{1,3}\d{7,14}$/;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!agreed) return;
+
+    if (!phoneRegex.test(formData.phone.replace(/[\s\-()]/g, ''))) {
+      setPhoneError('Введите номер в международном формате, например +79001234567');
+      return;
+    }
+    setPhoneError('');
 
     try {
       await fetch('https://formsubmit.co/ajax/parfumepoint@mail.ru', {
@@ -23,13 +32,14 @@ export function EmailFormContent({ className = '' }: { className?: string }) {
         body: JSON.stringify({
           name: formData.name,
           email: formData.email,
+          phone: formData.phone,
           _subject: 'Новая заявка с сайта PARFUMEPOINT',
         }),
       });
       setIsSubmitted(true);
       setTimeout(() => {
         setIsSubmitted(false);
-        setFormData({ name: '', email: '' });
+        setFormData({ name: '', email: '', phone: '' });
         setAgreed(false);
       }, 3000);
     } catch {
@@ -57,6 +67,26 @@ export function EmailFormContent({ className = '' }: { className?: string }) {
             placeholder="Ваше имя"
             maxLength={100}
           />
+        </div>
+        <div>
+          <label className="block text-sm font-medium mb-2">
+            Телефон <span className="text-primary">*</span>
+          </label>
+          <input
+            type="tel"
+            required
+            value={formData.phone}
+            onChange={(e) => {
+              setFormData({ ...formData, phone: e.target.value });
+              if (phoneError) setPhoneError('');
+            }}
+            className="w-full px-4 py-3 rounded-xl bg-secondary/50 border border-glass-border focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+            placeholder="+7 900 123 45 67"
+            maxLength={20}
+          />
+          {phoneError && (
+            <p className="text-sm text-destructive mt-1">{phoneError}</p>
+          )}
         </div>
         <div>
           <label className="block text-sm font-medium mb-2">
