@@ -70,6 +70,25 @@ export function EmailFormContent({ className = '' }: { className?: string }) {
         </div>
         <div>
           <label className="block text-sm font-medium mb-2">
+            Телефон <span className="text-primary">*</span>
+          </label>
+          <input
+            type="tel"
+            required
+            value={formData.phone}
+            onChange={(e) => {
+              setFormData({ ...formData, phone: e.target.value });
+              if (phoneError) setPhoneError('');
+            }}
+            className="w-full px-4 py-3 rounded-xl bg-secondary/50 border border-glass-border focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+            placeholder="+7 900 123 45 67"
+            maxLength={20}
+          />
+          {phoneError && (
+            <p className="text-sm text-destructive mt-1">{phoneError}</p>
+          )}
+        <div>
+          <label className="block text-sm font-medium mb-2">
             E-mail <span className="text-primary">*</span>
           </label>
           <input
