@@ -87,6 +87,7 @@ export function EmailFormContent({ className = '' }: { className?: string }) {
           {phoneError && (
             <p className="text-sm text-destructive mt-1">{phoneError}</p>
           )}
+        </div>
         <div>
           <label className="block text-sm font-medium mb-2">
             E-mail <span className="text-primary">*</span>
